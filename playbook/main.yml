@@ -1,0 +1,22 @@
+---
+- hosts: development_vagrant_box
+  sudo: true
+  user: vagrant
+  tasks:
+    - name: install packages
+      apt: name={{item}} update_cache=yes
+      with_items:
+        - tmux
+        - zsh
+        - htop
+        - iftop
+        - python
+        - python3
+        - ruby
+        - golang
+        - gem
+        - make
+        - curl
+        - postgresql
+        - libpq-dev
+        - nginx

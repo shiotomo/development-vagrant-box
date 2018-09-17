@@ -10,6 +10,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbook/main.yml"
+    ansible.playbook = "playbook/rbenv.yml"
     ansible.inventory_path = "settings/hosts"
     ansible.limit = "all"
   end

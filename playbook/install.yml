@@ -1,0 +1,42 @@
+---
+- hosts: development_vagrant_box
+  sudo: true
+  user: vagrant
+  tasks:
+    - name: install packages
+      apt: name={{item}} update_cache=yes
+      with_items:
+        - tmux
+        - zsh
+        - htop
+        - iftop
+        - python
+        - python3
+        - ruby
+        - golang
+        - nodejs
+        - npm
+        - gem
+        - make
+        - curl
+        - postgresql
+        - libpq-dev
+        - nginx
+    - name: install packages for rbenv
+      apt: name={{item}} update_cache=yes
+      with_items:
+        - ruby
+        - git
+        - curl
+        - g++
+        - make
+        - zlib1g-dev
+        - libssl-dev
+        - libreadline-dev
+        - libyaml-dev
+        - libxml2-dev
+        - libxslt-dev
+        - sqlite3
+        - libsqlite3-dev
+        - nodejs
+        - gem

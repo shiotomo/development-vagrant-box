@@ -9,8 +9,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 4567, host: 4567
 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "playbook/apt.yml"
-    ansible.playbook = "playbook/rbenv.yml"
+    ansible.playbook = "playbook/install.yml"
     ansible.inventory_path = "settings/hosts"
     ansible.limit = "all"
   end

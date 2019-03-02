@@ -1,2 +1,8 @@
-[development_vagrant_box]
+[master]
 192.168.33.11
+
+[develop]
+192.168.33.12
+
+[monitor]
+192.168.33.13

@@ -1,13 +1,15 @@
 ---
-- hosts: development_vagrant_box
-  sudo: true
+- hosts: monitor
+  become: yes
   user: vagrant
   tasks:
     - name: install packages
       apt: name={{item}} update_cache=yes
       with_items:
+        - vim
         - tmux
         - zsh
+        - fish
         - htop
         - iftop
         - python
@@ -16,7 +18,6 @@
         - golang
         - nodejs
         - npm
-        - gem
         - make
         - curl
         - postgresql

@@ -2,6 +2,8 @@
 - hosts: master
   become: yes
   user: vagrant
+  vars:
+    vagrant_home: "/home/vagrant"
   tasks:
     - name: install packages
       apt: name={{item}} update_cache=yes
@@ -41,3 +43,23 @@
         - libsqlite3-dev
         - nodejs
         - gem
+
+    - name: install rbenv
+      git: repo=https://github.com/sstephenson/rbenv.git
+           dest={{ vagrant_home }}/.rbenv
+           version=master
+
+    - name: install ruby_builds
+      git: repo=https://github.com/sstephenson/ruby-build.git
+           dest={{ vagrant_home }}/.rbenv/plugins/ruby-build
+           version=master
+
+    - name: install pyenv
+      git: repo=https://github.com/yyuu/pyenv.git
+           dest={{ vagrant_home }}/.pyenv
+           version=master
+
+    - name: install my .dotfiles
+      git: repo=https://github.com/shiotomo/.dotfiles
+           dest={{ vagrant_home }}/.dotfiles
+           version=master
